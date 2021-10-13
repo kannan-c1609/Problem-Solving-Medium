@@ -12,49 +12,21 @@
 // Input : aaaa
 // Output : 2
 
-class Main
-{
+def longestPrefixSuffix(s) :
+    n = len(s)
+    for res in range(n // 2, 0, -1):
+        # Check for shorter lengths
+        # of first half.
+        prefix = s[0: res]
+        suffix = s[n - res: n]
+         
+        if (prefix == suffix) :
+            return res
+             
+    # if no prefix and suffix match
+    # occurs
+    return 0
      
-   // Function to find largest prefix
-   // which is also a suffix
-   static int longestPrefixSuffix(String s)
-   {
-      int n = s.length();
- 
-      // If n is less than 2
-      if(n < 2) {
-          return 0;
-      }
- 
-      int len = 0;
-      int i = (n + 1)/2;
- 
-      // Iterate i till n
-      while(i < n)
-      {
- 
-        // If s.charAt(i) is equal to
-        // s.charAt(len)
-        if(s.charAt(i) == s.charAt(len))
-        {
-          ++len;
-          ++i;
-        }
-        else
-        {
-          i = i - len + 1;
-          len = 0;
-        }
-      }
- 
-      // Return len
-      return len;
- 
-  }
- 
-  public static void main (String[] args)
-  {
-    String s = "abcaabc";
-    System.out.println(longestPrefixSuffix(s));
-  }
-}
+if __name__ == "__main__":
+    s = "blablabla"
+    print(longestPrefixSuffix(s))
